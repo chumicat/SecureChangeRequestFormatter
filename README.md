@@ -30,3 +30,10 @@
 
 ## 輸出範例
 ![](/image/example.png)
+
+## 設定 config.json 
+- KEY 是固定的 ("SRC", "DST", "SRV", "ADD", "RM", "USG", "CMT")，值代表要搜尋的標的
+- "SRC", "DST", "SRV" 分別代表來源、目標、使用埠口服務。為必填欄位。
+- "ADD", "RM" 會轉化為行動，目前只支援純白名單。為選填欄位。目前只能轉化為`accept`, `remove`，沒有 `drop`
+- "USG", "CMT" 會合併為說明欄位
+- "service_replace" 的值為字典，用於將 "SRV" 欄位中出現的服務名稱替換為對應服務埠口
