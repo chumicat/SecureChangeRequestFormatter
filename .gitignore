@@ -1,0 +1,10 @@
+*~
+*.log
+*.spec
+*.swp
+*.xls
+*.xlsx
+*.zip
+.venv/
+build/
+dist/

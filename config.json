@@ -1,0 +1,12 @@
+{
+    "SRC": "Src-ip",
+    "DST": "Dst-ip", 
+    "SRV": "Service",
+    "ACP": "新增",
+    "DNY": "刪除",
+    "USG": "用途",
+    "CMT": "備註",
+    "service_replace": {
+        "網芳": "TCP 135; TCP 136; TCP 137; TCP 138; TCP 139; TCP 445; UDP 135; UDP 136; UDP 137; UDP 138; UDP 139; UDP 445"
+    }
+}
