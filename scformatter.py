@@ -234,7 +234,7 @@ def convert_excels(configs: dict, inputs: Sequence[str], output: str=None):
                     if (val:=safe_strip(row[cfgs["CMT"]])):
                         tmp.append(val)
                     values["CMT"] = "|".join(tmp)
-                    if error_msg and len(error_msg) == 4: # Skip empty line
+                    if error_msg and len(error_msg) == 3: # Skip empty line
                         continue
                     elif error_msg:
                         print(f"  ├─ Row {input_row_idx} Skipped. " + colored(f"{', '.join(error_msg)}", "yellow"))
