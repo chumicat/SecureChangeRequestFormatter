@@ -1,6 +1,7 @@
 # SecureChangeRequestFormatter
 ## 這是什麼？
-這是供客戶使用的
+這是供客戶使用的轉換腳本，能將客戶的需求表單轉換為 Secure Change 需要的格式<br>
+為因應更多樣的變化，提供 `config.json` 作為關鍵字設定以提高使用彈性
 
 ## 參考資料
 - [Tufin 原廠文件](https://forum.tufin.com/support/kc/latest/Content/Suite/change-request_advanced-options.htm)
@@ -25,3 +26,7 @@
 - 服務欄位需要填入協議類型，例如 "TCP 22" 或 "UDP 514"。沒有協議只有埠口會默認設定為 "TCP"
 - 因客需表單設定，「行動」被拆分為「刪除」與「新增」兩個欄位。可以皆空(原廠表格允許)但不濃同時有值。「行動」的類別只支援「刪除」與「新增」，也就是純白名單，只有`accept`, `remove`，沒有 `drop`
 - 「來原」、「目標」、「服務」為必填欄位，
+- 因會檢查欄位會檢查 Row1, Row2，項目則由 Row 2 開始檢查，因此 Row 2 可能產生誤報，還請忽略
+
+## 輸出範例
+![](/image/example.png)
