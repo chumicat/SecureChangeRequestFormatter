@@ -18,8 +18,8 @@ CONFIG_PATH = "config.json"
 LOG_PATH = "output.log"
 ENCODING = "utf8"
 EXTS = ("*.xlsx", "*.xls")
-ALL_CONFIGS = {"SRC", "DST", "SRV", "ACP", "DNY", "USG", "CMT"}
-REQUIRED_CONFIGS = {"SRC", "DST", "SRV", "ACP", "DNY"}
+ALL_CONFIGS = {"SRC", "DST", "SRV", "ADD", "RM", "USG", "CMT"}
+REQUIRED_CONFIGS = {"SRC", "DST", "SRV", "ADD", "RM"}
 COMPLEX_CONFIGS = {"service_replace"}
 
 
@@ -221,13 +221,14 @@ def convert_excels(configs: dict, inputs: Sequence[str], output: str=None):
                         for pattern, replacement in configs["service_replace"].items():
                             values["SRV"] = values["SRV"].replace(pattern, replacement)
                     else: error_msg.append(f"Miss '{configs["SRV"]}'")
-                    add_true, rm_true = safe_strip(row[cfgs["ACP"]]), safe_strip(row[cfgs["DNY"]])
+                    add_true, rm_true = safe_strip(row[cfgs["ADD"]]), safe_strip(row[cfgs["RM"]])
                     if add_true and rm_true:
-                        error_msg.append(f"Have Both ('{configs["ACP"]}'&'{configs["DNY"]}')")
+                        error_msg.append(f"Have Both ('{configs["ADD"]}'&'{configs["RM"]}')")
                     elif add_true or rm_true:
-                        values["ACT"] = "accept" if add_true else "drop"
+                        values["ACT"] = "accept" if add_true else "remove"
                     else:
-                        error_msg.append(f"Miss ('{configs["ACP"]}'|'{configs["DNY"]}')")
+                        values["ACT"] = "" # ACT accept empty
+                        # error_msg.append(f"Miss ('{configs["ADD"]}'|'{configs["RM"]}')")
                     if (val:=safe_strip(row[cfgs["USG"]])):
                         tmp.append(val)
                     if (val:=safe_strip(row[cfgs["CMT"]])):

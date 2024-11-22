@@ -2,8 +2,8 @@
     "SRC": "Src-ip",
     "DST": "Dst-ip", 
     "SRV": "Service",
-    "ACP": "新增",
-    "DNY": "刪除",
+    "ADD": "新增",
+    "RM": "刪除",
     "USG": "用途",
     "CMT": "備註",
     "service_replace": {
